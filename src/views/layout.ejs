@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobShala</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/70966ca7cd.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <h3>JobShala</h3>
+        </a>
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <% if(loginStatus==="seeker") { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/jobs">
+                <div class="d-flex flex-column align-items-center">
+                  <i class="fa-solid fa-briefcase"></i>
+                  <div>Jobs</div>
+                </div>
+              </a>
+            </li>
+            <% } %> <% if(loginStatus) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/jobs">
+                <div class="d-flex flex-column align-items-center">
+                  <i class="fa-solid fa-solar-panel"></i>
+                  <div class="">Dashboard</div>
+                </div>
+              </a>
+            </li>
+            <% } %>
+          </ul>
+          <% if(loginStatus) { %>
+          <form class="d-flex mt-2" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-dark me-2" type="submit">
+              Search
+            </button>
+          </form>
+          <% } %>
+          <button
+            class="btn btn-outline-warning mt-2 me-2"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+            type="submit"
+          >
+            <%= logValue %>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Include modals -->
+    <%- include('landing/loginModal') %> <%- include('landing/registerModal')
+    %><%- body %>
+  </body>
+</html>

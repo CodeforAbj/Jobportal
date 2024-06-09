@@ -1,0 +1,59 @@
+<!-- Login modal -->
+<div
+  class="modal fade"
+  id="loginModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Welcome to Jobshala</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="userEmailField" class="form-label">Username</label>
+            <input
+              type="email"
+              class="form-control"
+              id="userEmailField"
+              aria-describedby="emailByLine"
+            />
+            <div id="emailBYLine" class="form-text">
+              Enter your registered email as username.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="userPasswordField" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="userPasswordField"
+            />
+          </div>
+          <button type="submit" class="btn btn-dark">Login</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span> Not registered ?</span>
+        <button
+          type="button"
+          class="btn btn-warning"
+          data-bs-toggle="modal"
+          data-bs-target="#registerModal"
+          data-bs-dismiss="modal"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

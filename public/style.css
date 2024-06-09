@@ -1,0 +1,41 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.animated-div {
+  width: 100%;
+  height: 100px; /* Adjust the height as needed */
+
+  position: relative;
+  animation: slideDown 1s ease-out forwards; /* Adjust the duration and easing as needed */
+}
+
+@keyframes slideDown {
+  0% {
+    left: -100%; /* Start position: above the viewport */
+  }
+  100% {
+    left: 0; /* End position: at the top of the viewport */
+  }
+}
+
+#landingPhoto {
+  height: auto;
+  max-width: 50dvw;
+}
+
+@media (max-width: 768px) {
+  #landingPhoto {
+    max-width: 65dvw;
+  }
+}
+
+@media (max-width: 576px) {
+  #landingPhoto {
+    max-width: 80dvw;
+  }
+}
