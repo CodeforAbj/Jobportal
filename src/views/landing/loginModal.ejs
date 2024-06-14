@@ -3,7 +3,7 @@
   class="modal fade"
   id="loginModal"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="loginModal"
   aria-hidden="true"
 >
   <div class="modal-dialog">
@@ -26,7 +26,11 @@
               class="form-control"
               id="userEmailField"
               aria-describedby="emailByLine"
+              required
+              pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$"
+              title="Please enter a valid email address."
             />
+
             <div id="emailBYLine" class="form-text">
               Enter your registered email as username.
             </div>
@@ -37,6 +41,9 @@
               type="password"
               class="form-control"
               id="userPasswordField"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
+              title="Password must be at least 8 characters and contain at least one uppercase letter, lowercase letter, number, and symbol."
             />
           </div>
           <button type="submit" class="btn btn-dark">Login</button>

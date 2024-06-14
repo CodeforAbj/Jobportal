@@ -1,5 +1,9 @@
 const landingController = (req, res) => {
-  res.render("landing/landingPage", { logValue: "Login", loginStatus: false });
+  res.render("landing/landingPage", {
+    logValue: "Login",
+    loginStatus: false,
+    errorMessage: false,
+  });
 };
 
 const error404 = (req, res) => {

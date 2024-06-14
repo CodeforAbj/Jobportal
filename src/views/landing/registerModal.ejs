@@ -1,9 +1,9 @@
-<!-- Login modal -->
+<!-- Registration modal -->
 <div
   class="modal fade"
   id="registerModal"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="registerModal"
   aria-hidden="true"
 >
   <div class="modal-dialog">
@@ -18,17 +18,30 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form>
+                  <div id="errorOutput" class="" role="alert">
+          </div>
+          
+        <form method="post" action="/register" onsubmit="return validatePasswords()">
           <div class="mb-3">
-            <label for="userEmailField" class="form-label">Email</label>
-            <input type="email" class="form-control" id="userEmailField" />
+            <label for="nameField" class="form-label">Name</label>
+            <input type="text" class="form-control" id="nameField" required title="Enter Your Full Name" />
           </div>
           <div class="mb-3">
-            <label for="userPasswordField" class="form-label">Password</label>
+          <div class="mb-3">
+            <label for="userEmailField" class="form-label">Email</label>
+            <input type="email" class="form-control" id="userEmailFieldR" required
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+            title="Please enter a valid email address."/>
+          </div>
+          <div class="mb-3">
+            <label for="userPasswordFieldR" class="form-label">Password</label>
             <input
               type="password"
               class="form-control"
               id="userPasswordField"
+               required
+       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
+       title="Password must be at least 8 characters and contain at least one uppercase letter, lowercase letter, number, and symbol."
             />
           </div>
           <div>
@@ -39,6 +52,9 @@
               type="password"
               class="form-control"
               id="userPasswordConfirmField"
+              required
+       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
+       title="Password must be at least 8 characters and contain at least one uppercase letter, lowercase letter, number, and symbol."
             />
           </div>
           <button type="submit" class="mt-2 btn btn-dark">Register</button>
@@ -59,3 +75,35 @@
     </div>
   </div>
 </div>
+
+
+
+<script>
+  function validatePasswords() {
+      const password = document.getElementById('userPasswordFieldR').value;
+      const confirmPassword = document.getElementById('userPasswordConfirmField').value;
+      const errorOutput = document.getElementById('errorOutput');
+      
+      errorOutput.className = "";
+        errorOutput.textContent = "Checking...";
+
+      console.log(password,confirmPassword);
+
+      if (!password) { // Check if password is empty
+    errorOutput.className = "alert alert-danger";
+    errorOutput.textContent = "Please enter a password!";
+    return false;
+  }
+      if (password !== confirmPassword) {
+          
+      console.log("wrong");      
+        errorOutput.className = "alert alert-danger";
+        errorOutput.textContent = "Passwords do not match!";   
+          return false;  // Prevent form submission
+      }
+
+      console.log("right");      
+      
+      return true;  // Allow form submission
+  }
+</script>

@@ -1,29 +1,31 @@
 <main
   class="container-fluid d-flex justify-content-around justify-content-md-between align-items-center p-5 flex-column flex-md-row"
-  style="height: 100dvh"
+  style="height: 80dvh"
 >
-  <div class="animated-div mb-2 flex-item">
-    <p class="fw-bold text-warning" style="font-size: 10vh">JobShala</p>
-    <div>
-      <span class="fw-bold text-secondary fs-2">
-        Where Opportunities Meet Talent
-      </span>
-    </div>
-    <div class="mt-4">
-      <button
-        class="btn btn-dark"
-        data-bs-toggle="modal"
-        data-bs-target="#registerModal"
-      >
-        I'm a Recruiter
-      </button>
-      <button
-        class="btn btn-dark"
-        data-bs-toggle="modal"
-        data-bs-target="#registerModal"
-      >
-        I'm a Job Seeker
-      </button>
+  <div>
+    <div class="animated-div mb-2 flex-item">
+      <p class="fw-bold text-warning" style="font-size: 10vh">JobShala</p>
+      <div>
+        <span class="fw-bold text-secondary fs-2">
+          Where Opportunities Meet Talent
+        </span>
+      </div>
+      <div class="mt-4 mb-5">
+        <button
+          class="btn btn-dark mb-2"
+          data-bs-toggle="modal"
+          data-bs-target="#registerModal"
+        >
+          I'm a Recruiter
+        </button>
+        <button
+          class="btn btn-dark mb-2"
+          data-bs-toggle="modal"
+          data-bs-target="#registerModal"
+        >
+          I'm a Job Seeker
+        </button>
+      </div>
     </div>
   </div>
   <div class="mt-5 mb-2 pt-5 flex-item">
@@ -34,7 +36,7 @@
     />
   </div>
 </main>
-
+<%- include('./registerModal') %>
 <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
