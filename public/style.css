@@ -1,9 +1,12 @@
-body,
+/* body,
 html {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
+} */
+body {
+  padding-top: 70px; /* Adjust the value to match your navbar height */
 }
 
 .animated-div {

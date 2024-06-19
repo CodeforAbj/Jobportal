@@ -9,7 +9,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5">Begin your journey with Jobshala</h1>
+        <h1 class="modal-title fs-5">Hello <span id="typeDisplay"></span>, Begin your journey with Jobshala</h1>
         <button
           type="button"
           class="btn-close"
@@ -20,16 +20,19 @@
       <div class="modal-body">
                   <div id="errorOutput" class="" role="alert">
           </div>
-          
+
         <form method="post" action="/register" onsubmit="return validatePasswords()">
           <div class="mb-3">
+            <input type="text" class="form-control" name="typeOfUser" id="typeOfUser" hidden value="Null" />
+          </div>
+          <div class="mb-3">
             <label for="nameField" class="form-label">Name</label>
-            <input type="text" class="form-control" id="nameField" required title="Enter Your Full Name" />
+            <input type="text" class="form-control" name="name" id="nameField" required title="Enter Your Full Name" />
           </div>
           <div class="mb-3">
           <div class="mb-3">
             <label for="userEmailField" class="form-label">Email</label>
-            <input type="email" class="form-control" id="userEmailFieldR" required
+            <input type="email" class="form-control" name="email" id="userEmailFieldR" required
             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
             title="Please enter a valid email address."/>
           </div>
@@ -38,6 +41,7 @@
             <input
               type="password"
               class="form-control"
+              name="password"
               id="userPasswordField"
                required
        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
@@ -75,35 +79,3 @@
     </div>
   </div>
 </div>
-
-
-
-<script>
-  function validatePasswords() {
-      const password = document.getElementById('userPasswordFieldR').value;
-      const confirmPassword = document.getElementById('userPasswordConfirmField').value;
-      const errorOutput = document.getElementById('errorOutput');
-      
-      errorOutput.className = "";
-        errorOutput.textContent = "Checking...";
-
-      console.log(password,confirmPassword);
-
-      if (!password) { // Check if password is empty
-    errorOutput.className = "alert alert-danger";
-    errorOutput.textContent = "Please enter a password!";
-    return false;
-  }
-      if (password !== confirmPassword) {
-          
-      console.log("wrong");      
-        errorOutput.className = "alert alert-danger";
-        errorOutput.textContent = "Passwords do not match!";   
-          return false;  // Prevent form submission
-      }
-
-      console.log("right");      
-      
-      return true;  // Allow form submission
-  }
-</script>

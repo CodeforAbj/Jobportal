@@ -3,6 +3,15 @@
   style="height: 80dvh"
 >
   <div>
+    <% if(errorMessage){ %> <% if(errorMessage == "success"){ %>
+    <div class="alert alert-success">Great Success ! Please Login</div>
+    <%} else { %>
+
+    <div id="errorOutput" class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+    <% }} %>
+
     <div class="animated-div mb-2 flex-item">
       <p class="fw-bold text-warning" style="font-size: 10vh">JobShala</p>
       <div>
@@ -15,6 +24,7 @@
           class="btn btn-dark mb-2"
           data-bs-toggle="modal"
           data-bs-target="#registerModal"
+          onclick="changetypeOfUser('recruiter')"
         >
           I'm a Recruiter
         </button>
@@ -22,6 +32,7 @@
           class="btn btn-dark mb-2"
           data-bs-toggle="modal"
           data-bs-target="#registerModal"
+          onclick="changetypeOfUser('seeker')"
         >
           I'm a Job Seeker
         </button>

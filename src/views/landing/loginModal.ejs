@@ -18,34 +18,41 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="/login" method="post">
           <div class="mb-3">
             <label for="userEmailField" class="form-label">Username</label>
             <input
               type="email"
               class="form-control"
               id="userEmailField"
-              aria-describedby="emailByLine"
+              name="email"
               required
               pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$"
               title="Please enter a valid email address."
             />
 
-            <div id="emailBYLine" class="form-text">
-              Enter your registered email as username.
+            <div class="form-text">
+              Recruiter Demo account : demoRec@account.com
+            </div>
+            <div class="form-text">
+              Job Seeker Demo account : demoSeek@account.com
             </div>
           </div>
-          <div class="mb-3">
+          <div class="mb-2">
             <label for="userPasswordField" class="form-label">Password</label>
             <input
               type="password"
               class="form-control"
               id="userPasswordField"
+              name="password"
               required
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
               title="Password must be at least 8 characters and contain at least one uppercase letter, lowercase letter, number, and symbol."
             />
           </div>
+
+          <div class="mb-2 form-text">Demo account : Password@123</div>
+
           <button type="submit" class="btn btn-dark">Login</button>
         </form>
       </div>

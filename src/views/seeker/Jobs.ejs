@@ -1,0 +1,26 @@
+<div class="container d-flex flex-wrap justify-content-around mt-5">
+  <% jobs.forEach(function(job) { %>
+  <div class="card text-center m-3" style="width: 18rem">
+    <div class="card-header">
+      <h6 class="card-title fs-4"><%= job.companyName %></h6>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= job.postTitle %></h5>
+      <p class="card-text">CTC: <%= job.ctc %></p>
+      <p class="card-text">Deadline: <%= job.deadline %></p>
+      <p class="card-text">Job Location: <%= job.location %></p>
+      <div class="d-flex flex-wrap justify-content-between">
+        <% job.requirements.forEach(function(requirement) { %>
+        <span class="border border-warning rounded-0 p-1">
+          <%= requirement %>
+        </span>
+        <% }) %>
+      </div>
+    </div>
+    <div class="card-footer d-flex justify-content-around">
+      <a href="#" class="btn btn-warning">View Details</a>
+      <a href="#" class="btn btn-dark">Apply Now</a>
+    </div>
+  </div>
+  <% }) %>
+</div>
