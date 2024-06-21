@@ -29,3 +29,6 @@ function validatePasswords() {
 
   return true; // Allow form submission
 }
+function confirmDelete() {
+  return confirm("Are you sure you want to delete your this post?");
+}

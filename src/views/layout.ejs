@@ -10,12 +10,12 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="/style.css" />
     <script
       src="https://kit.fontawesome.com/70966ca7cd.js"
       crossorigin="anonymous"
     ></script>
-    <script src="frontendUtility.js"></script>
+    <script src="/frontendUtility.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -77,19 +77,29 @@
               Search
             </button>
           </form>
-          <% } %>
+          <% } %> <%if(!loginStatus && loginStatus!==0){%>
+          <!-- // Second condition is for no display of the btn  -->
           <button
             class="btn btn-outline-warning mt-2 me-2"
             data-bs-toggle="modal"
             data-bs-target="#loginModal"
             type="submit"
           >
-            <%= logValue %>
+            LogIn
           </button>
+          <%}%> <%if(loginStatus){%>
+          <a class="btn btn-outline-warning mt-2 me-2" href="/logout">
+            LogOut
+          </a>
+          <%}%>
         </div>
       </div>
     </nav>
-    <%- include('landing/loginModal') %> <%- body %>
+    <%if(lastVisit){%>
+    <div class="fixed-bottom text-danger ps-3">
+      Your last visit was on <%= lastVisit %>
+    </div>
+    <%}%> <%- include('landing/loginModal') %> <%- body %>
     <!-- Login modals -->
   </body>
 </html>

@@ -31,9 +31,9 @@ const validateRegistrationData = async (req, res, next) => {
 
   if (!validationErrors.isEmpty()) {
     res.render("landing/landingPage", {
-      logValue: "Login",
       loginStatus: false,
       errorMessage: validationErrors.array()[0].msg,
+      lastVisit: req.session.lastVisit,
     });
   } else {
     next();

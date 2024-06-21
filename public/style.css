@@ -1,12 +1,25 @@
-/* body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-} */
 body {
   padding-top: 70px; /* Adjust the value to match your navbar height */
+
+  caret-color: transparent;
+}
+
+/* Hide caret by default */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div {
+  caret-color: transparent;
+}
+
+/* Show caret in input fields */
+input,
+textarea {
+  caret-color: auto; /* or specify a color */
 }
 
 .animated-div {

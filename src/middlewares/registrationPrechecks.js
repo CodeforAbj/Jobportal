@@ -4,9 +4,9 @@ const alreadyExistsCheck = (req, res, next) => {
   const user = users.find((u) => u.email == req.body.email);
   if (user) {
     res.render("landing/landingPage", {
-      logValue: "Login",
       loginStatus: false,
       errorMessage: "Email already in use",
+      lastVisit: req.session.lastVisit,
     });
   } else {
     next();

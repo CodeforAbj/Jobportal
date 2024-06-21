@@ -15,8 +15,14 @@
     <tr>
       <th scope="row"><%= index + 1 %></th>
       <td>
-        <button class="btn btn-warning">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+        <a class="btn btn-warning" href="/job/update/<%=job.id%>"> Update</a>
+        <form
+          action="/job/delete/<%= job.id %>?_method=DELETE"
+          method="POST"
+          onsubmit="return confirmDelete()"
+        >
+          <button class="btn btn-danger">Delete</button>
+        </form>
       </td>
       <td><%= job.companyName %></td>
       <td><%= job.postTitle %></td>
