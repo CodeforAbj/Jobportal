@@ -1,19 +1,16 @@
 import express from "express";
 import path from "path";
 import methodOverride from "method-override";
-import {
-  landingController,
-  error404,
-  logoutHandler,
-} from "./src/controllers/generalController.js";
 import expressLayouts from "express-ejs-layouts";
+
 import {
   loginHandler,
   registerHandler,
+  landingController,
+  logoutHandler,
 } from "./src/controllers/userController.js";
 import session from "express-session";
-import { validateRegistrationData } from "./src/middlewares/registerFormValidation.js";
-import { alreadyExistsCheck } from "./src/middlewares/registrationPrechecks.js";
+
 import {
   addJob,
   deleteJob,
@@ -22,7 +19,11 @@ import {
   showDashboard,
   showUpdateJobFrom,
   updateJobHandler,
+  showJobDetails,
 } from "./src/controllers/jobController.js";
+
+import { validateRegistrationData } from "./src/middlewares/registerFormValidation.js";
+import { alreadyExistsCheck } from "./src/middlewares/registrationPrechecks.js";
 import { authMiddleware } from "./src/middlewares/authMiddleware.js";
 import { loggedInCheck } from "./src/middlewares/loggedInCheck.js";
 const app = express();
@@ -56,11 +57,13 @@ app.post(
 );
 app.post("/login", loginHandler);
 app.get("/", loggedInCheck, landingController);
-app.get("/404", error404);
 app.get("/logout", logoutHandler);
 
 app.use(authMiddleware);
 // Below this auth is necessary.
+
+// 404 Handling Middleware
+
 app.get("/dashboard", showDashboard);
 app.get("/job/all", showAllJobs);
 app.get("/job/new", showCreateJobForm);
@@ -68,5 +71,12 @@ app.post("/job/add", addJob);
 app.delete("/job/delete/:jobId", deleteJob);
 app.get("/job/update/:jobId", showUpdateJobFrom);
 app.put("/job/update/:jobId", updateJobHandler);
+app.get("/job/details/:jobId", showJobDetails);
 
+// If no route is found, handle it as a 404
+app.use((req, res, next) => {
+  res
+    .status(404)
+    .render("404", { loginStatus: 0, lastVisit: req.session.lastVisit });
+});
 export default app;

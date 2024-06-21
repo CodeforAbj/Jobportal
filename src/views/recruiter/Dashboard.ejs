@@ -15,6 +15,9 @@
     <tr>
       <th scope="row"><%= index + 1 %></th>
       <td>
+        <a class="btn btn-dark" href="/job/details/<%=job.id%>">
+          View Details</a
+        >
         <a class="btn btn-warning" href="/job/update/<%=job.id%>"> Update</a>
         <form
           action="/job/delete/<%= job.id %>?_method=DELETE"

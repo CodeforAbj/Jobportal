@@ -1,0 +1,87 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card shadow-sm border-dark">
+        <div
+          class="card-header d-flex justify-content-between align-items-center bg-dark text-white"
+        >
+          <h5 class="card-title m-0"><%= job.companyName %></h5>
+          <span class="badge bg-warning rounded-pill text-black"
+            ><%= job.postedOn %></span
+          >
+        </div>
+        <div class="card-body">
+          <h3 class="card-title"><%= job.postTitle %></h3>
+          <p class="card-text"><b> Description: </b> <%= job.description %></p>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  Location:
+                  <span class="badge bg-info rounded-pill"
+                    ><%= job.location %></span
+                  >
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  CTC:
+                  <span class="badge bg-success rounded-pill"
+                    >₹<%= job.ctc %></span
+                  >
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  Application Deadline:
+                  <span class="badge bg-danger rounded-pill"
+                    ><%= job.deadline %></span
+                  >
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  No. Of Openings:
+                  <span class="badge bg-warning rounded-pill"
+                    ><%= job.noOfOpenings %></span
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h5 class="card-title">Requirements</h5>
+              <ul class="list-group list-group-flush">
+                <% for (const requirement of job.requirements) { %>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  <span><%= requirement %></span>
+                  <i class="fas fa-check-circle text-success"></i>
+                </li>
+                <% } %>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer d-flex justify-content-between">
+          <% if (job.applicants && job.applicants.length > 0) { %>
+          <h5 class="card-title">Applicants</h5>
+          <ul class="list-group list-group-flush mb-0">
+            <% for (const applicant of job.applicants) { %>
+            <li class="list-group-item">
+              <a href="#" class="btn btn-dark btn-sm"> <%= applicant %> </a>
+            </li>
+            <% } %>
+          </ul>
+
+          <% } else { %>
+          <h5 class="card-title">No Applicants Yet</h5>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

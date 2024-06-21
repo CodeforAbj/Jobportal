@@ -8,7 +8,8 @@ export default class JobModel {
     location,
     description,
     deadline,
-    recruiterId
+    recruiterId,
+    noOfOpenings
   ) {
     this.id = id;
     this.companyName = companyName;
@@ -19,6 +20,7 @@ export default class JobModel {
     this.description = description;
     this.deadline = deadline;
     this.applicants = [];
+    this.noOfOpenings = noOfOpenings;
 
     // For custom date format
 
@@ -41,6 +43,7 @@ export default class JobModel {
       description,
       deadline,
       recruiterId,
+      noOfOpenings,
     } = job;
     const newJob = new JobModel(
       id,
@@ -51,7 +54,8 @@ export default class JobModel {
       location,
       description,
       deadline,
-      recruiterId
+      recruiterId,
+      noOfOpenings
     );
     jobs.push(newJob);
     console.log(JobModel.getAllJobs());
@@ -93,9 +97,10 @@ var jobs = [
     location: "New York",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     deadline: "2024-05-31",
-    applicants: ["demoSeek@account.com"],
+    applicants: ["demoSeek@account.com", "demoSeeker2@account.com"],
     postedOn: "2024-04-07",
     recruiterId: "demoRec@account.com",
+    noOfOpenings: 2,
   },
   {
     id: "KQC0f",
@@ -109,6 +114,7 @@ var jobs = [
     applicants: [],
     postedOn: "2024-04-10",
     recruiterId: "demoRec@account.com",
+    noOfOpenings: 1,
   },
   {
     id: "ZeWMZ",
@@ -122,6 +128,7 @@ var jobs = [
     applicants: ["demoSeek@account.com"],
     postedOn: "2024-06-17",
     recruiterId: "demoRec@account.com",
+    noOfOpenings: 5,
   },
   {
     id: "SgkAM",
@@ -135,6 +142,7 @@ var jobs = [
     applicants: [],
     postedOn: "2024-02-17",
     recruiterId: "demoRec@account.com",
+    noOfOpenings: 3,
   },
   {
     id: "L43sM",
@@ -148,5 +156,6 @@ var jobs = [
     applicants: [],
     postedOn: "2024-03-15",
     recruiterId: "demoRec@account.com",
+    noOfOpenings: 2,
   },
 ];

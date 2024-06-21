@@ -82,6 +82,15 @@ const updateJobHandler = (req, res) => {
   JobModel.updateJob(jobId, newData);
   res.redirect("/dashboard");
 };
+
+const showJobDetails = (req, res) => {
+  const job = JobModel.getJobById(req.params.jobId);
+  res.render("recruiter/jobDetailsView", {
+    job: job,
+    loginStatus: "recruiter",
+    lastVisit: req.session.lastVisit,
+  });
+};
 export {
   showAllJobs,
   showCreateJobForm,
@@ -90,4 +99,5 @@ export {
   deleteJob,
   showUpdateJobFrom,
   updateJobHandler,
+  showJobDetails,
 };

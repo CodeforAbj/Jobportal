@@ -1,5 +1,23 @@
 import UserModel from "../model/user.model.js";
 
+const landingController = (req, res) => {
+  res.render("landing/landingPage", {
+    loginStatus: false,
+    errorMessage: false,
+    lastVisit: req.session.lastVisit,
+  });
+};
+
+const logoutHandler = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log("Error logging out", err);
+      res.render("/404", { loginStatus: 0, lastVisit: req.session.lastVisit });
+    }
+    res.render("logout", { loginStatus: 0, lastVisit: null });
+  });
+};
+
 const registerHandler = (req, res) => {
   UserModel.registerUser(req.body);
   res.render("landing/landingPage", {
@@ -31,4 +49,4 @@ const loginHandler = (req, res) => {
   }
 };
 
-export { registerHandler, loginHandler };
+export { registerHandler, loginHandler, landingController, logoutHandler };
