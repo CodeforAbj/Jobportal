@@ -48,5 +48,4 @@ const loginHandler = (req, res) => {
     });
   }
 };
-
 export { registerHandler, loginHandler, landingController, logoutHandler };

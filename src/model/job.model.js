@@ -97,7 +97,7 @@ var jobs = [
     location: "New York",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     deadline: "2024-05-31",
-    applicants: ["demoSeek@account.com", "demoSeeker2@account.com"],
+    applicants: ["demoSeek@account.com", "demoRec@account.com"],
     postedOn: "2024-04-07",
     recruiterId: "demoRec@account.com",
     noOfOpenings: 2,

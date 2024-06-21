@@ -6,6 +6,7 @@ export default class UserModel {
       (this.password = password),
       (this.jobsRelated = []);
     this.typeOfUser = typeOfUser;
+    this.resumeUrl = "";
   }
 
   static getJobsRelated(email) {
@@ -32,6 +33,9 @@ export default class UserModel {
   }
   static getUsers() {
     return users;
+  }
+  static getUserByEmail(email) {
+    return users.find((u) => u.email == email);
   }
 }
 var users = [

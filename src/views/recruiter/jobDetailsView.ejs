@@ -70,9 +70,24 @@
           <% if (job.applicants && job.applicants.length > 0) { %>
           <h5 class="card-title">Applicants</h5>
           <ul class="list-group list-group-flush mb-0">
-            <% for (const applicant of job.applicants) { %>
-            <li class="list-group-item">
-              <a href="#" class="btn btn-dark btn-sm"> <%= applicant %> </a>
+            <% for (const applicant of applicants) { %>
+            <li class="list-group-item border-top">
+              <div>
+                <div>
+                  <div class="fw-bold"><%= applicant.name %></div>
+                  <div class="text-muted ms-2 mb-2">
+                    <i class="fa-solid fa-square-envelope text-success"></i> <%=
+                    applicant.email %>
+                  </div>
+                </div>
+                <!-- check for this url after multer -->
+                <a
+                  href="<%= applicant.resumeUrl %>"
+                  class="btn btn-warning btn-sm"
+                >
+                  View resume
+                </a>
+              </div>
             </li>
             <% } %>
           </ul>

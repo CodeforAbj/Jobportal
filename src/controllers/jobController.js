@@ -1,6 +1,6 @@
 import { generateId } from "../middlewares/idGenerator.js";
 import JobModel from "../model/job.model.js";
-
+import UserModel from "../model/user.model.js";
 const showAllJobs = (req, res) => {
   const jobs = JobModel.getAllJobs();
   // ------------------------ //
@@ -85,11 +85,23 @@ const updateJobHandler = (req, res) => {
 
 const showJobDetails = (req, res) => {
   const job = JobModel.getJobById(req.params.jobId);
+
+  let applicants = getListOfApplicants(job.applicants);
   res.render("recruiter/jobDetailsView", {
     job: job,
+    applicants: applicants,
     loginStatus: "recruiter",
     lastVisit: req.session.lastVisit,
   });
+};
+
+const getListOfApplicants = (applicantsEmailArray) => {
+  let applicants = [];
+  for (let i = 0; i < applicantsEmailArray.length; i++) {
+    let applicant = UserModel.getUserByEmail(applicantsEmailArray[i]);
+    applicants.push(applicant);
+  }
+  return applicants;
 };
 export {
   showAllJobs,
