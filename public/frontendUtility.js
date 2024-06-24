@@ -32,3 +32,16 @@ function validatePasswords() {
 function confirmDelete() {
   return confirm("Are you sure you want to delete your this post?");
 }
+
+function checkFileSize() {
+  let errorDisplay = Document.getElementById("sizeErrorDisplay");
+  let fileInput = document.getElementById("resumeInput");
+  let file = fileInput.files[0];
+  if (file.size > 1048576) {
+    // 1MB in bytes
+    errorDisplay.className = "alert alert-danger";
+    errorDisplay.textContent = "Passwords do not match!";
+    return false;
+  }
+  return true;
+}

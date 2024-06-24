@@ -8,6 +8,7 @@ import {
   registerHandler,
   landingController,
   logoutHandler,
+  sendResume,
 } from "./src/controllers/userController.js";
 import session from "express-session";
 
@@ -20,12 +21,16 @@ import {
   showUpdateJobFrom,
   updateJobHandler,
   showJobDetails,
+  showApplyView,
+  handleJobApplication,
+  handleUploadResume,
 } from "./src/controllers/jobController.js";
 
 import { validateRegistrationData } from "./src/middlewares/registerFormValidation.js";
 import { alreadyExistsCheck } from "./src/middlewares/registrationPrechecks.js";
 import { authMiddleware } from "./src/middlewares/authMiddleware.js";
 import { loggedInCheck } from "./src/middlewares/loggedInCheck.js";
+import { upload } from "./src/middlewares/multerConfig.js";
 const app = express();
 
 app.use(express.static(path.resolve("public")));
@@ -72,7 +77,10 @@ app.delete("/job/delete/:jobId", deleteJob);
 app.get("/job/update/:jobId", showUpdateJobFrom);
 app.put("/job/update/:jobId", updateJobHandler);
 app.get("/job/details/:jobId", showJobDetails);
-
+app.get("/job/apply/:jobId", showApplyView);
+app.post("/job/apply/:jobId", handleJobApplication);
+app.post("/applicant/upload", upload.single("resumeInput"), handleUploadResume);
+app.get("/applicant/resume/:user", sendResume);
 // If no route is found, handle it as a 404
 app.use((req, res, next) => {
   res

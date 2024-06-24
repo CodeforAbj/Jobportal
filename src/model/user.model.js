@@ -6,7 +6,7 @@ export default class UserModel {
       (this.password = password),
       (this.jobsRelated = []);
     this.typeOfUser = typeOfUser;
-    this.resumeUrl = "";
+    this.resumeFileName = undefined;
   }
 
   static getJobsRelated(email) {
@@ -39,18 +39,53 @@ export default class UserModel {
   }
 }
 var users = [
-  new UserModel(
-    1,
-    "Demo Recruiter",
-    "demoRec@account.com",
-    "Password@123",
-    "recruiter"
-  ),
-  new UserModel(
-    2,
-    "Demo Seeker",
-    "demoSeek@account.com",
-    "Password@123",
-    "seeker"
-  ),
+  {
+    id: "KMKbj",
+    name: "Demo Recruiter",
+    email: "demoRec@account.com",
+    password: "Password@123",
+    jobsRelated: [],
+    typeOfUser: "recruiter",
+    resumeFileName: undefined,
+  },
+  {
+    id: "DG4cd",
+    name: "Demo Seeker",
+    email: "demoSeek@account.com",
+    password: "Password@123",
+    jobsRelated: [],
+    typeOfUser: "seeker",
+    resumeFileName:
+      "1719228115902-Abhijeet Shrivastava Resume APRIL V1 Final.pdf",
+  },
+  {
+    id: "KL21p",
+    name: "Priya Kapoor",
+    email: "priyaKapoor@account.com",
+    password: "Password@123",
+    jobsRelated: [],
+    typeOfUser: "seeker",
+    resumeFileName:
+      "1719228115902-Abhijeet Shrivastava Resume APRIL V1 Final.pdf",
+  },
+  {
+    id: "TZ98u",
+    name: "Rahul Sharma",
+    email: "rahulSharma@account.com",
+    password: "Password@123",
+    jobsRelated: [],
+    typeOfUser: "seeker",
+    resumeFileName:
+      "1719228115902-Abhijeet Shrivastava Resume APRIL V1 Final.pdf",
+  },
+  {
+    id: "VM71q",
+    name: "Aisha Khan",
+    email: "aishaKhan@account.com",
+    password: "Password@123",
+    jobsRelated: [],
+    typeOfUser: "seeker",
+    resumeFileName:
+      "1719228115902-Abhijeet Shrivastava Resume APRIL V1 Final.pdf",
+  },
 ];

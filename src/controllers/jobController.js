@@ -20,6 +20,8 @@ const showAllJobs = (req, res) => {
     totalPages: totalPages,
     loginStatus: "seeker",
     lastVisit: req.session.lastVisit,
+    user: req.session.user,
+    resumeFlag: req.session.resumeFlag,
   });
 
   // ------------------------ //
@@ -30,13 +32,18 @@ const showDashboard = (req, res) => {
 
   if (req.session.typeOfUser == "recruiter") {
     const jobs = JobModel.getJobsByRecruiter(user);
-    res.render(`recruiter/Dashboard`, {
+    res.render(`recruiter/dashboard`, {
       loginStatus: "recruiter",
       jobs: jobs,
       lastVisit: req.session.lastVisit,
+      user: req.session.user,
     });
   } else if (req.session.typeOfUser == "recruiter") {
-    res.redirect("/job/all");
+    res.render(`seeker/dashboard`, {
+      loginStatus: "seeker",
+      lastVisit: req.session.lastVisit,
+      user: req.session.user,
+    });
   } else {
     res.redirect("/");
   }
@@ -103,6 +110,34 @@ const getListOfApplicants = (applicantsEmailArray) => {
   }
   return applicants;
 };
+
+const showApplyView = (req, res) => {
+  const job = JobModel.getJobById(req.params.jobId);
+  res.render("seeker/applyPage", {
+    job: job,
+    loginStatus: "seeker",
+    lastVisit: req.session.lastVisit,
+    user: req.session.user,
+    resumeFlag: req.session.resumeFlag,
+  });
+};
+const handleJobApplication = (req, res) => {};
+const handleUploadResume = (req, res) => {
+  const applicant = UserModel.getUserByEmail(req.body.user);
+  if (applicant == -1) {
+    // case of error, should not reach here ever
+    res
+      .status(404)
+      .render("404", { loginStatus: 0, lastVisit: req.session.lastVisit });
+    return;
+  }
+  req.session.resumeFlag = true;
+  res.render("seeker/successPage", {
+    loginStatus: "seeker",
+    lastVisit: req.session.lastVisit,
+  });
+};
+
 export {
   showAllJobs,
   showCreateJobForm,
@@ -112,4 +147,7 @@ export {
   showUpdateJobFrom,
   updateJobHandler,
   showJobDetails,
+  showApplyView,
+  handleJobApplication,
+  handleUploadResume,
 };

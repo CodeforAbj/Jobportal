@@ -1,0 +1,53 @@
+<!-- resumeUpload modal -->
+<div
+  class="modal fade"
+  id="resumeUploadModal"
+  tabindex="-1"
+  aria-labelledby="resumeUploadModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Step Closer to your dream job</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div id="sizeErrorDisplay" class="" role="alert"></div>
+        <form
+          action="/applicant/upload/"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="mb-3">
+            <label for="resumeInput" class="form-label">Upload Resume</label>
+            <input
+              type="file"
+              class="form-control"
+              id="resumeInput"
+              name="resumeInput"
+              required
+              title="File Should be less than 1MB"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="user"
+              id="user"
+              hidden
+              value="<%= user%>"
+            />
+          </div>
+          <button type="submit" class="btn btn-dark">Upload</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
