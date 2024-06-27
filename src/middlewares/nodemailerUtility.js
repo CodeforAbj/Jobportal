@@ -17,7 +17,6 @@ const mailFunction = async (receiver, message) => {
 
   try {
     const result = await transpoter.sendMail(mailConfig);
-    console.log(`Success: Email sent to ${receiver}`);
   } catch (error) {
     console.log(error);
   }
