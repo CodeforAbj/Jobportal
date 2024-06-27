@@ -1,3 +1,5 @@
+import { generateId } from "../middlewares/idGenerator";
+
 export default class UserModel {
   constructor(id, name, email, password, typeOfUser) {
     (this.id = id),
@@ -15,14 +17,15 @@ export default class UserModel {
   }
 
   static registerUser(user) {
+    const id = generateId();
     let newUser = new UserModel(
-      users.length + 1,
+      id,
       user.name,
       user.email,
       user.password,
       user.typeOfUser
     );
-    users.push(user);
+    users.push(newUser);
   }
 
   static isValidUser(email, password) {
@@ -53,7 +56,7 @@ var users = [
     name: "Demo Seeker",
     email: "demoSeek@account.com",
     password: "Password@123",
-    jobsRelated: [],
+    jobsRelated: ["V3ZoP", "ZeWMZ", "L43sM"],
     typeOfUser: "seeker",
     resumeFileName:
       "1719228115902-Abhijeet Shrivastava Resume APRIL V1 Final.pdf",
@@ -63,7 +66,7 @@ var users = [
     name: "Priya Kapoor",
     email: "priyaKapoor@account.com",
     password: "Password@123",
-    jobsRelated: [],
+    jobsRelated: ["ZeWMZ", "V3ZoP"],
     typeOfUser: "seeker",
     resumeFileName:
       "1719228115902-Abhijeet Shrivastava Resume APRIL V1 Final.pdf",
@@ -73,7 +76,7 @@ var users = [
     name: "Rahul Sharma",
     email: "rahulSharma@account.com",
     password: "Password@123",
-    jobsRelated: [],
+    jobsRelated: ["L43sM"],
     typeOfUser: "seeker",
     resumeFileName:
       "1719228115902-Abhijeet Shrivastava Resume APRIL V1 Final.pdf",
@@ -83,7 +86,7 @@ var users = [
     name: "Aisha Khan",
     email: "aishaKhan@account.com",
     password: "Password@123",
-    jobsRelated: [],
+    jobsRelated: ["L43sM"],
     typeOfUser: "seeker",
     resumeFileName:
       "1719228115902-Abhijeet Shrivastava Resume APRIL V1 Final.pdf",

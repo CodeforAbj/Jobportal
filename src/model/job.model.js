@@ -33,30 +33,7 @@ export default class JobModel {
     this.recruiterId = recruiterId;
   }
   static addJob(job) {
-    const {
-      id,
-      companyName,
-      postTitle,
-      requirements,
-      ctc,
-      location,
-      description,
-      deadline,
-      recruiterId,
-      noOfOpenings,
-    } = job;
-    const newJob = new JobModel(
-      id,
-      companyName,
-      postTitle,
-      requirements,
-      ctc,
-      location,
-      description,
-      deadline,
-      recruiterId,
-      noOfOpenings
-    );
+    const newJob = new JobModel(...job);
     jobs.push(newJob);
     console.log(JobModel.getAllJobs());
   }
@@ -125,7 +102,7 @@ var jobs = [
     location: "Chicago",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     deadline: "2024-07-01",
-    applicants: ["priyaKapoor@account.com"],
+    applicants: ["demoSeek@account.com", "priyaKapoor@account.com"],
     postedOn: "2024-06-17",
     recruiterId: "demoRec@account.com",
     noOfOpenings: 5,
@@ -153,7 +130,11 @@ var jobs = [
     location: "Seattle",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     deadline: "2024-04-01",
-    applicants: ["rahulSharma@account.com", "aishaKhan@account.com"],
+    applicants: [
+      "rahulSharma@account.com",
+      "aishaKhan@account.com",
+      "demoSeek@account.com",
+    ],
     postedOn: "2024-03-15",
     recruiterId: "demoRec@account.com",
     noOfOpenings: 2,

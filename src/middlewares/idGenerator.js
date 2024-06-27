@@ -1,3 +1,6 @@
+// ====================================================== //
+// ===== function that helps in generating random ID ==== //
+// ====================================================== //
 function generateId() {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const alphanumeric =

@@ -23,7 +23,7 @@ const validateRegistrationData = async (req, res, next) => {
       ),
 
     // Validate email
-    body("email").isEmail().withMessage("Email is not valid").normalizeEmail(),
+    body("email").isEmail().withMessage("Email is not valid"),
   ];
 
   await Promise.all(rules.map((rule) => rule.run(req)));
@@ -33,7 +33,6 @@ const validateRegistrationData = async (req, res, next) => {
     res.render("landing/landingPage", {
       loginStatus: false,
       errorMessage: validationErrors.array()[0].msg,
-      lastVisit: req.session.lastVisit,
     });
   } else {
     next();

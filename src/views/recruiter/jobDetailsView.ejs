@@ -65,7 +65,7 @@
             </div>
           </div>
         </div>
-
+        <%if(loginStatus == 'recruiter'){%>
         <div class="card-footer d-flex justify-content-between">
           <% if (job.applicants && job.applicants.length > 0) { %>
           <h5 class="card-title">Applicants</h5>
@@ -96,6 +96,7 @@
           <h5 class="card-title">No Applicants Yet</h5>
           <% } %>
         </div>
+        <%}%>
       </div>
     </div>
   </div>

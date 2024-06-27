@@ -80,12 +80,20 @@
             <% } %>
           </ul>
           <% if(loginStatus) { %>
-          <form class="d-flex mt-2" role="search">
+          <form
+            class="d-flex mt-2"
+            role="search"
+            method="post"
+            action="/job/search"
+          >
             <input
+              name="searchQuery"
+              id="searchQuery"
               class="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
+              title="Enter Company Name, Post Title or location to search"
             />
             <button class="btn btn-outline-dark me-2" type="submit">
               Search
@@ -109,9 +117,10 @@
         </div>
       </div>
     </nav>
-    <%if(lastVisit){%>
+    <%if(locals.lastVisit){%>
     <div class="fixed-bottom text-danger ps-3">
-      Your last visit was on <%= lastVisit %>
+      <!-- Shows your last visit  -->
+      Your last visit was on <%= locals.lastVisit %>
     </div>
     <%}%> <%- include('landing/loginModal') %> <%- body %>
     <!-- Login modals -->

@@ -1,3 +1,6 @@
+// ====================================================== //
+//  function that makes reusing the registration form possible by changing a hidden field  //
+// ====================================================== //
 function changetypeOfUser(newValue) {
   const typeDisplay = document.getElementById("typeDisplay");
   typeDisplay.textContent =
@@ -5,6 +8,11 @@ function changetypeOfUser(newValue) {
   const hiddenField = document.getElementById("typeOfUser");
   hiddenField.value = newValue.toLowerCase();
 }
+
+// ====================================================== //
+// = Function that matches password andconfirm password = //
+// ====================================================== //
+
 function validatePasswords() {
   const password = document.getElementById("userPasswordFieldR").value;
   const confirmPassword = document.getElementById(
@@ -29,9 +37,17 @@ function validatePasswords() {
 
   return true; // Allow form submission
 }
+
+// ====================================================== //
+// ======= function to confirm once before delete ======= //
+// ====================================================== //
 function confirmDelete() {
   return confirm("Are you sure you want to delete your this post?");
 }
+
+// ====================================================== //
+// ====== Validation for file size of resume upload ===== //
+// ====================================================== //
 
 function checkFileSize() {
   let errorDisplay = Document.getElementById("sizeErrorDisplay");

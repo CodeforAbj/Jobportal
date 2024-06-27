@@ -2,10 +2,12 @@
   class="container-fluid d-flex flex-column justify-content-center align-items-center"
   style="height: 80dvh"
 >
-  <div class="fw-bold text-success d-block" style="font-size: 100px">
-    Great Success
-  </div>
+  <%if(errorMessage){%>
+  <div class="text-danger fs-2"><%= errorMessage %></div>
 
+  <%}%>
+  <div class="fw-bold text-danger d-block" style="font-size: 100px">Oops</div>
+  <div class="fw-italic text-secondary d-block">Gone Fishing !!</div>
   <div>
     <a class="text-secondary" href="/"
       >Back to <i class="fa-solid fa-house"></i> Home</a

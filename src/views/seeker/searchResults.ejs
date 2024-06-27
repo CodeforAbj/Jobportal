@@ -1,3 +1,6 @@
+<%if(jobs.length === 0) {%>
+<h1 class="text-danger text-center mt-5">No such Jobs Found</h1>
+<%} else {%>
 <div>
   <div class="container d-flex flex-wrap justify-content-around mt-5 mb-5">
     <% jobs.forEach(function(job) { %>
@@ -47,32 +50,5 @@
     </div>
     <% }) %>
   </div>
-  <nav>
-    <ul class="pagination pagination-lg justify-content-center">
-      <% if (currentPage > 1) { %>
-      <li class="page-item">
-        <a class="page-link text-warning" href="?page=<%= currentPage - 1 %>"
-          >Previous</a
-        >
-      </li>
-      <% } %> <% for (let i = 1; i <= totalPages; i++) { %> <% if (i ===
-      currentPage) { %>
-      <li class="page-item">
-        <span class="page-link bg-dark text-warning"><%= i %></span>
-      </li>
-      <% } else { %>
-
-      <li class="page-item">
-        <a class="page-link text-warning" href="?page=<%= i %>"><%= i %></a>
-      </li>
-      <% } %> <% } %> <% if (currentPage < totalPages) { %>
-      <li class="page-item">
-        <a class="page-link text-warning" href="?page=<%= currentPage + 1 %>"
-          >Next</a
-        >
-      </li>
-      <% } %>
-    </ul>
-  </nav>
 </div>
-<%- include('./resumeUploadModal') %>
+<%}%>
