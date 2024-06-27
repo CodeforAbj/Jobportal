@@ -33,9 +33,32 @@ export default class JobModel {
     this.recruiterId = recruiterId;
   }
   static addJob(job) {
-    const newJob = new JobModel(...job);
+    const {
+      id,
+      companyName,
+      postTitle,
+      requirements,
+      ctc,
+      location,
+      description,
+      deadline,
+      recruiterId,
+      noOfOpenings,
+    } = job;
+    const newJob = new JobModel(
+      id,
+      companyName,
+      postTitle,
+      requirements,
+      ctc,
+      location,
+      description,
+      deadline,
+      recruiterId,
+      noOfOpenings
+    );
+
     jobs.push(newJob);
-    console.log(JobModel.getAllJobs());
   }
 
   static getJobsByRecruiter(recruiterId) {

@@ -17,7 +17,7 @@ const landingController = (req, res) => {
     res.cookie("lastVisit", date);
     res.locals.lastVisit = date;
   }
-  res.render("landing/landingPage", {
+  res.render(path.join("landing", "landingPage"), {
     loginStatus: undefined, // Tells Type of User Recruiter || Seeker
     errorMessage: false, // Helps in Showing errors in Registering and Landing
   });
@@ -29,7 +29,7 @@ const landingController = (req, res) => {
 
 const registerHandler = (req, res) => {
   UserModel.registerUser(req.body);
-  res.render("landing/landingPage", {
+  res.render(path.join("landing", "landingPage"), {
     loginStatus: undefined,
     errorMessage: "success",
   });
@@ -62,7 +62,7 @@ const loginHandler = (req, res) => {
   }
   // -- Case for failure in login attempt -- //
   else {
-    res.render(`landing/landingPage`, {
+    res.render(path.join("landing", "landingPage"), {
       loginStatus: false,
       errorMessage: "Incorrect Email or Password",
     });

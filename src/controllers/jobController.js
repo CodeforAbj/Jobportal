@@ -2,7 +2,7 @@ import { generateId } from "../middlewares/idGenerator.js";
 import JobModel from "../model/job.model.js";
 import UserModel from "../model/user.model.js";
 import { mailFunction } from "../middlewares/nodemailerUtility.js";
-import { application } from "express";
+import path from "path";
 
 // ====================================================== //
 // ============== function to show all jobs ============= //
@@ -21,7 +21,7 @@ const showAllJobs = (req, res) => {
 
   const paginatedJobs = jobs.slice(start, end);
 
-  res.render("seeker/jobs", {
+  res.render(path.join("seeker", "jobs"), {
     jobs: paginatedJobs,
     currentPage: page,
     totalPages: totalPages,
@@ -69,7 +69,7 @@ const showDashboard = (req, res) => {
 // ====================================================== //
 
 const showCreateJobForm = (req, res) => {
-  res.render("recruiter/createJobForm", {
+  res.render(path.join("recruiter", "createJobForm"), {
     loginStatus: req.session.typeOfUser,
   });
 };
@@ -106,7 +106,7 @@ const deleteJob = (req, res) => {
 
 const showUpdateJobFrom = (req, res) => {
   const job = JobModel.getJobById(req.params.jobId);
-  res.render("recruiter/updateJobForm", {
+  res.render(path.join("recruiter", "updateJobForm"), {
     job: job,
     loginStatus: req.session.typeOfUser,
   });
@@ -130,7 +130,7 @@ const updateJobHandler = (req, res) => {
 const showJobDetails = (req, res) => {
   const job = JobModel.getJobById(req.params.jobId);
   if (!job) {
-    res.status(404).render("404", {
+    res.status(404).render("errorPage", {
       errorMessage: "No Such Job Details Found",
       loginStatus: 0,
     });
@@ -138,7 +138,7 @@ const showJobDetails = (req, res) => {
   }
   // Getting details of applicants that applied
   let applicants = getListOfApplicants(job.applicants);
-  res.render("recruiter/jobDetailsView", {
+  res.render(path.join("recruiter", "jobDetailsView"), {
     job: job,
     applicants: applicants,
     loginStatus: req.session.typeOfUser,
@@ -162,13 +162,13 @@ const getListOfApplicants = (applicantsEmailArray) => {
 const showApplyView = (req, res) => {
   const job = JobModel.getJobById(req.params.jobId);
   if (!job) {
-    res.status(404).render("404", {
+    res.status(404).render("errorPage", {
       errorMessage: "No Such Job Details Found",
       loginStatus: 0,
     });
     return;
   }
-  res.render("seeker/applyPage", {
+  res.render(path.join("seeker", "applyPage"), {
     job: job,
     loginStatus: "seeker",
     user: req.session.user,
@@ -187,18 +187,16 @@ const handleJobApplication = (req, res) => {
   const user = UserModel.getUserByEmail(useremail);
   const job = JobModel.getJobById(jobId);
   if (!job || !user) {
-    res
-      .status(404)
-      .render("404", {
-        errorMessage: "No Such Job Details Found",
-        loginStatus: 0,
-      });
+    res.status(404).render("errorPage", {
+      errorMessage: "No Such Job Details Found",
+      loginStatus: 0,
+    });
     return;
   }
 
   if (user.jobsRelated.includes(jobId)) {
     // User already Applied
-    res.status(404).render("errorPage", {
+    res.status(403).render("errorPage", {
       errorMessage: "User Already Applied to this job",
       loginStatus: 0,
     });
@@ -224,7 +222,7 @@ const handleJobApplication = (req, res) => {
 
   mailFunction(useremail, mailmessage);
 
-  res.render("seeker/successPage", {
+  res.render(path.join("seeker", "successPage"), {
     loginStatus: req.session.typeOfUser,
   });
 };
@@ -245,7 +243,7 @@ const handleUploadResume = (req, res) => {
   }
   applicant.resumeFileName = req.file.filename;
   req.session.resumeFlag = true;
-  res.render("seeker/successPage", {
+  res.render(path.join("seeker", "successPage"), {
     loginStatus: "seeker",
   });
 };
@@ -267,7 +265,7 @@ const searchJobs = (req, res) => {
       resultJob.push(job);
     }
   });
-  res.render("seeker/searchResults", {
+  res.render(path.join("seeker", "searchResults"), {
     jobs: resultJob,
     loginStatus: "seeker",
     user: req.session.user,
