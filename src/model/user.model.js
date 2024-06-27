@@ -1,4 +1,4 @@
-import { generateId } from "../middlewares/idGenerator";
+import { generateId } from "../middlewares/idGenerator.js";
 
 export default class UserModel {
   constructor(id, name, email, password, typeOfUser) {
