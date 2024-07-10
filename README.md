@@ -59,6 +59,18 @@ Start the server
 ## Website
 Visit [Jobshala](https://jobshala.onrender.com/) deployed at render.com to explore the live platform.
 
+## ScreenShots
+#### Landing Page
+![Landing Page](https://github.com/CodeforAbj/Jobportal/blob/4ca8f8a3c62ae4c80545dacaec5c0e88000712d2/Screenshots/HomePage.jpg)
+
+#### Job Details
+![Job Details](https://github.com/CodeforAbj/Jobportal/blob/4ca8f8a3c62ae4c80545dacaec5c0e88000712d2/Screenshots/JobDetails.JPG)
+
+#### Paginated Jobs View
+![Painated Jobs](https://github.com/CodeforAbj/Jobportal/blob/4ca8f8a3c62ae4c80545dacaec5c0e88000712d2/Screenshots/PaginatedJobs.JPG)
+
+#### Recruiter Dashboard
+![Dashboard](https://github.com/CodeforAbj/Jobportal/blob/4ca8f8a3c62ae4c80545dacaec5c0e88000712d2/Screenshots/RecDashboard.JPG)
 
 
 ## Author
